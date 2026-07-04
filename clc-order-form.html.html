@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLC 30th Anniversary</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #dcdcdc;
+    --accent: #7a1f2b;
+    --accent-hover: #5f1620;
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --error: #b3261e;
+    --success: #1e7e34;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 40px 16px;
+  }
+  .card {
+    max-width: 540px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 32px 28px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin: 0 0 4px;
+  }
+  p.subtitle {
+    color: var(--muted);
+    margin: 0 0 28px;
+    font-size: 0.95rem;
+  }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 18px 0 6px;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: #fff;
+    color: var(--ink);
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  textarea { resize: vertical; min-height: 70px; }
+  .row {
+    display: flex;
+    gap: 12px;
+  }
+  .row > div { flex: 1; }
+  .item-toggle {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .item-toggle label {
+    flex: 1;
+    margin: 0;
+    text-align: center;
+    padding: 12px 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.15s ease;
+  }
+  .item-toggle input[type="radio"] { display: none; }
+  .item-toggle input[type="radio"]:checked + label {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+  }
+  .item-toggle .opt { display: contents; }
+  .hint {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  button {
+    width: 100%;
+    margin-top: 26px;
+    padding: 13px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { background: var(--accent-hover); }
+  button:disabled { background: #999; cursor: not-allowed; }
+  .status {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+  }
+  .status.success { color: var(--success); display: block; }
+  .status.error { color: var(--error); display: block; }
+  .required { color: var(--error); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <p class="eyebrow">CLC 30th Anniversary</p>
+  <h1>Order a T-Shirt or Jumper</h1>
+  <p class="subtitle">Celebrate with us — order your commemorative shirt below. Adult and children's sizes available.</p>
+
+  <form id="orderForm">
+    <label for="name">Full name <span class="required">*</span></label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email <span class="required">*</span></label>
+    <input type="email" id="email" required>
+
+    <label>Item <span class="required">*</span></label>
+    <div class="item-toggle">
+      <div class="opt">
+        <input type="radio" id="item-tshirt" name="item" value="T-Shirt" checked>
+        <label for="item-tshirt">T-Shirt</label>
+      </div>
+      <div class="opt">
+        <input type="radio" id="item-jumper" name="item" value="Hoodie">
+        <label for="item-jumper">Hoodie</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="size">Size <span class="required">*</span></label>
+        <select id="size" required>
+          <option value="">Select...</option>
+          <optgroup label="Adult - Male">
+            <option>Male S</option>
+            <option>Male M</option>
+            <option>Male L</option>
+            <option>Male XL</option>
+            <option>Male XXL</option>
+          </optgroup>
+          <optgroup label="Adult - Female">
+            <option>Female S</option>
+            <option>Female M</option>
+            <option>Female L</option>
+            <option>Female XL</option>
+            <option>Female XXL</option>
+          </optgroup>
+          <optgroup label="Children">
+            <option>Kids 3-4</option>
+            <option>Kids 5-6</option>
+            <option>Kids 7-8</option>
+            <option>Kids 9-10</option>
+            <option>Kids 11-12</option>
+            <option>Kids 13-14</option>
+          </optgroup>
+        </select>
+        <div class="hint">Choose Male, Female, or Children's (by age range)</div>
+      </div>
+      <div>
+        <label for="quantity">Quantity <span class="required">*</span></label>
+        <input type="number" id="quantity" min="1" value="1" required>
+      </div>
+    </div>
+
+    <label for="colour">Colour</label>
+    <select id="colour">
+      <option value="White">White</option>
+      <option value="Black">Black</option>
+      <option value="Other">Other (specify)</option>
+    </select>
+    <input type="text" id="colourOther" placeholder="Enter colour" style="margin-top:8px; display:none;">
+
+    <label for="notes">Notes (optional)</label>
+    <textarea id="notes" placeholder="Anything else we should know?"></textarea>
+
+    <button type="submit" id="submitBtn">Submit Order</button>
+    <div class="status" id="status"></div>
+  </form>
+</div>
+
+<script>
+  // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz18jp79gyTRnSnR0Ym0BAUNzgCTggJQrI_DodGixHMIyzkn3Jv_-9Scv8WuyNB5n_NEw/exec";
+
+  const form = document.getElementById("orderForm");
+  const status = document.getElementById("status");
+  const submitBtn = document.getElementById("submitBtn");
+  const colourSelect = document.getElementById("colour");
+  const colourOther = document.getElementById("colourOther");
+
+  colourSelect.addEventListener("change", function () {
+    if (colourSelect.value === "Other") {
+      colourOther.style.display = "block";
+      colourOther.required = true;
+    } else {
+      colourOther.style.display = "none";
+      colourOther.required = false;
+      colourOther.value = "";
+    }
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (SCRIPT_URL.indexOf("PASTE_YOUR") !== -1) {
+      status.textContent = "Form isn't connected yet — add your Apps Script URL in the code.";
+      status.className = "status error";
+      return;
+    }
+
+    const colourValue = colourSelect.value === "Other" ? colourOther.value : colourSelect.value;
+
+    const payload = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      item: document.querySelector('input[name="item"]:checked').value,
+      size: document.getElementById("size").value,
+      quantity: document.getElementById("quantity").value,
+      colour: colourValue,
+      notes: document.getElementById("notes").value
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+    status.className = "status";
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    })
+      .then(() => {
+        status.textContent = "Order submitted — thank you!";
+        status.className = "status success";
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = "Something went wrong. Please try again.";
+        status.className = "status error";
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Order";
+      });
+  });
+</script>
+
+</body>
+</html>
